@@ -31,8 +31,10 @@ namespace MultiShop.Order.WebApi.Controllers
             return Ok(values);
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> AddressById(GetAddressByIdQuery query)
+        public async Task<IActionResult> AddressById(int id)
         {
+
+            GetAddressByIdQuery query = new(id);
             var values = await _addressByIdQueryHandler.Handle(query);
             return Ok(values);
         }
@@ -49,8 +51,9 @@ namespace MultiShop.Order.WebApi.Controllers
             return Ok("Adres Bilgisi Başarıyla Güncellendi.");
         }
         [HttpDelete]
-        public async Task<IActionResult> RemoveAddress(RemoveAddressCommand removeAddressCommand)
+        public async Task<IActionResult> RemoveAddress(int id)
         {
+            RemoveAddressCommand removeAddressCommand = new(id);
             await _removeAddressCommandHandler.Handle(removeAddressCommand);
             return Ok("Adres Bilgisi Başarıyla Silindi.");
         }
