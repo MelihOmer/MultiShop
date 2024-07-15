@@ -1,0 +1,5 @@
+Identity => 5001
+Catalog  =>	7200
+Discount => 7201
+Order	 => 7202
+Cargo    => 7203
